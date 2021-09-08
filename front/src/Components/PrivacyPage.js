@@ -97,18 +97,6 @@ const Footer = styled.div`
 function PrivacyPage(props) {
     return (
         <div >
-            {/* nav */}
-            <Container style={{justifyContent: 'space-between'}}>
-                GEKCH.IO
-                Browse
-                Upload Games
-                Dashboard
-                <div>
-                    Login
-                    Register
-                </div>
-
-            </Container>
             <Container>
                 {/* left sidebar */}
                 <Sidebar>
@@ -178,12 +166,6 @@ function PrivacyPage(props) {
                         Nunc finibus malesuada facilisis. Phasellus elementum, massa nec sagittis viverra, risus augue dictum ante, vitae consequat massa dui eu massa. 
                         </p>
                     </MainDiv>
-
-                    <Footer>
-                        About
-                        Terms of Service
-                        Privacy
-                    </Footer>
                 </RightDiv>
             </Container>
         </div>
