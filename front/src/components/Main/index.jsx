@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
+<<<<<<< HEAD
 import { Form, Button} from "react-bootstrap"
 import "./index.css"
 import { SignInWithEmailAndPassword } from '../../utils/FirebaseConnector'
@@ -23,6 +24,13 @@ export default class Main extends Component {
     
     render() {
         
+=======
+import { Form, Button } from "react-bootstrap"
+import "./index.css"
+
+export default class Main extends Component {
+    render() {
+>>>>>>> set up the login page
         return (
             <div id="formBox">
                 <Form action="" id="form" >
