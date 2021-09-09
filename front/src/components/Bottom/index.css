@@ -1,0 +1,20 @@
+.bottom{
+    background-color: white;
+    /* overflow: hidden; */
+    position: fixed;
+    bottom:0;
+    width: 100%;
+    
+    
+    
+}
+
+.inactive{
+    color:black;
+}
+
+#bottomBox{
+    background-color: burlywood;
+    display: flex;
+    justify-content: flex-end;
+}
