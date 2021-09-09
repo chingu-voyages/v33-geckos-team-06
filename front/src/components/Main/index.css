@@ -1,0 +1,79 @@
+.create-title{
+    padding: 17px 18px 3px;
+    
+  }
+  
+  .hr{
+    border: 1px solid black;
+  }
+  
+  .sign-up-box{
+   
+    color: black;
+    width: 80%;
+    height: auto;
+    background-color: #C4C4C4;
+    margin-top: 40px;
+    margin-left: 10%;
+  }
+  
+  .sign-up-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  .form-input{
+    padding: 0px 100px 0px 40px;
+  }
+  
+  .vl{
+    border-left: 3px solid black;
+    height: 410px;
+  }
+  
+  .input{
+    padding: 17px 18px 3px;
+   
+    
+  }
+  input[type="text"]{
+    width: 370px;
+    height: 30px;
+  
+  }
+  
+  .submit-button{
+    padding: 17px 18px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .button{
+    color :white;
+    font-size: 15px;
+    font-weight: bolder;
+    background-color: red;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+  }
+  
+  .button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+  
+  .login-option{
+    color: #635E5E;
+    font-size: 13px;
+    padding-left: 10px;
+  }
+  
+  .right-side-signup{
+    margin: 40px;
+  }
+  
+  .register{
+    font-weight: bolder;
+  }
+  

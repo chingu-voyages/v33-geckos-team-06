@@ -1,0 +1,40 @@
+.app-header {
+    background-color: #E2FFDB;
+    box-shadow: 1px 2px 5px gray;
+    margin-bottom: 4px;
+    width: 100%;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: calc(10px + 2vmin);
+    padding: 10px;
+    color: black;
+  }
+  .title{
+    font-weight: 900;
+    padding-left: 0px;
+    padding-right: 20px;
+    
+  }
+  
+  .header1{
+    padding: 10px;
+    font-size: medium;
+  }
+
+  .left-header{
+    display:flex;
+    align-items: center;
+    flex-direction: row;
+  }
+  .right-header{
+    display:flex;
+    flex-direction: row;
+  }
+
+  .header2{
+    margin: 15px;
+    padding: 3px;
+    border: 2px solid grey;
+  }
