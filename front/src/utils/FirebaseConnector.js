@@ -14,9 +14,7 @@ const InitializeFirebase = () => {
         messagingSenderId: "545190063381",
         appId: "1:545190063381:web:b23b157c7dc9c00450cd1c"
     };
-
-    console.log(`InitializeFirebase`);
-
+    
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 }
@@ -38,7 +36,6 @@ const CreateUserWithEmailAndPassword = async  (email, password) => {
                             const errorCode = error.code;
                             const errorMessage = error.message;
                             
-                            console.log(`Error - ${error}`);
                             returnValue = error;
                             return returnValue;
                         });
@@ -64,7 +61,6 @@ const SignInWithEmailAndPassword = async (email, password) => {
                             const errorCode = error.code;
                             const errorMessage = error.message;
                             
-                            console.log(`Error - ${error}`);
                             returnValue = error;
                             return returnValue;
                         });
