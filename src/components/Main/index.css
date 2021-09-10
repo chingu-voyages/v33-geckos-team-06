@@ -1,0 +1,30 @@
+#form{
+    margin: 25px 250px;
+    background-color: #C4C4C4;
+    padding:10px;
+    min-width: 300px;
+    display:flex;
+    flex-direction: column;
+
+}
+#formBox{
+    display:flex;
+    justify-content: center;
+}
+
+#username{
+    padding:10px 30px;
+}
+
+#password{
+    padding:10px 30px;
+}
+
+#loginButton{
+    margin:10px 30px;
+}
+
+#startingWord{
+    border-bottom:1px solid #000000;
+    padding:10px 30px;
+}
