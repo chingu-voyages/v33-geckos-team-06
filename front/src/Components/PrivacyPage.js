@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Navigation from './Navigation';
+import Bottom from './Bottom';
+
 
 
 const Container = styled.div`
@@ -67,6 +70,7 @@ const HeroDiv = styled.div`
     text-align: center;
     align-items: center;
     justify-content: center;
+    margin-top: 1em;
     
 `;
 
@@ -97,6 +101,7 @@ const Footer = styled.div`
 function PrivacyPage(props) {
     return (
         <div >
+            <Navigation />
             <Container>
                 {/* left sidebar */}
                 <Sidebar>
@@ -168,6 +173,8 @@ function PrivacyPage(props) {
                     </MainDiv>
                 </RightDiv>
             </Container>
+
+            <Bottom />
         </div>
     );
 }
