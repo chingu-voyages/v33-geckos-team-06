@@ -52,7 +52,7 @@ const SignInWithEmailAndPassword = async (email, password) => {
     //   loginUser = user;
     //   console.log(`User - ${JSON.stringify(loginUser)}`);
     // });
-
+    
     const auth = getAuth();
     let returnValue = {};
 
@@ -62,7 +62,7 @@ const SignInWithEmailAndPassword = async (email, password) => {
                             const errorMessage = error.message;
                             
                             returnValue = error;
-                            return returnValue;
+                            throw returnValue;
                         });
     return user;
 }
