@@ -12,6 +12,7 @@ import Header from "./components/Header"
 import Main from "./components/Main"
 import Bottom from "./components/Bottom"
 import PrivacyPage from "./components/PrivacyPage";
+import TermsPage from './components/TermsPage';
 import './App.css'
 
 
@@ -27,6 +28,10 @@ export default class App extends Component {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+          <Route path="/termsofservice">
+              <TermsPage />
+          </Route>
+
           <Route path="/privacy">
               <PrivacyPage />
           </Route>
