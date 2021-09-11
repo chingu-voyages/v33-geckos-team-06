@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Navbar, Nav } from 'react-bootstrap'
 import "./index.css"
+import logo from "../../images/logo.png"
 
 export default class Navigation extends Component {
     render() {
@@ -11,22 +12,26 @@ export default class Navigation extends Component {
                 <Navbar className="nav" variant="light" expand="sm" fixed="top">
 
                     <Navbar.Brand id="brand" href="/homepage">
-                        {/* <img alt="icon" src=""/> */}
+                        <img width="30"
+                            height="30"
+                            // className="d-inline-block align-top"
+                            id="brandLogo" 
+                            alt="icon" src={logo} />
                         Gekch.io</Navbar.Brand>
 
-                    
 
 
-                    
-                        <Nav.Item >
-                            <Nav.Link className="inactive" href="/Browse Games">Browse Games</Nav.Link>
-                        </Nav.Item>
 
-                        {/* me-auto: margin end-auto*/}
-                        <Nav.Item className="me-auto">
-                            <Nav.Link  className="inactive" href="/Upload Games">Upload Games</Nav.Link>
-                        </Nav.Item>
-                    
+
+                    <Nav.Item >
+                        <Nav.Link className="inactive" href="/Browse Games">Browse Games</Nav.Link>
+                    </Nav.Item>
+
+                    {/* me-auto: margin end-auto*/}
+                    <Nav.Item className="me-auto">
+                        <Nav.Link className="inactive" href="/Upload Games">Upload Games</Nav.Link>
+                    </Nav.Item>
+
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     {/* expand必须和toggle，collapse同时用 */}

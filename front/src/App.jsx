@@ -10,14 +10,17 @@ import {
 import Navigation from "./components/Navigation"
 import Header from "./components/Header"
 import Main from "./components/Main"
+import MainSignup from "./components/MainSignup"
 import Bottom from "./components/Bottom"
 import PrivacyPage from "./components/PrivacyPage";
 import TermsPage from './components/TermsPage';
 import './App.css'
+import { InitializeFirebase } from './utils/FirebaseConnector'
 
 
 export default class App extends Component {
   render() {
+    InitializeFirebase();
     return (
       <div>
 
@@ -41,6 +44,16 @@ export default class App extends Component {
               <Navigation/>
               <Header/>
               <Main/>
+              <Bottom/>
+            </div>
+            
+          </Route>
+
+          <Route path="/sign-up">
+            <div>
+              <Navigation/>
+              <Header/>
+              <MainSignup/>
               <Bottom/>
             </div>
             
