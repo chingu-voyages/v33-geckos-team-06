@@ -1,8 +1,37 @@
-import React from 'react'
+import React, {useState} from 'react'
 import "./index.css"
+import {CreateUserWithEmailAndPassword} from "../../utils/FirebaseConnector"
 
-const index = () => {
-    return (
+const Index = () => { 
+  const [email, setEmail] = useState("")  
+  const onEmailChange = (event) => {
+    setEmail(event.target.value)
+    console.log(email)
+  }
+  const [password, setPassword] = useState("")  
+  const onPasswordChange = (event) => {
+    setPassword(event.target.value)
+    console.log(password)
+  }
+  const [repeatPassword, setRepeatPassword] = useState("")  
+  const onRepeatPasswordChange = (event) => {
+    setRepeatPassword(event.target.value)
+    console.log(repeatPassword)
+  }
+
+  const createAccount = (event) => {
+    if (password === repeatPassword){
+      CreateUserWithEmailAndPassword(email, password).then((user) => {
+        let loginUser = user;
+        console.log(`User - ${JSON.stringify(loginUser)}`)
+      })
+    } else{
+      alert("Passwords don't match")
+    }
+    event.preventDefault()
+  }
+
+  return (
         <div>
         <div class="sign-up-box"> 
         <div class="create-title">Create an account on Gekch.io
@@ -23,21 +52,21 @@ const index = () => {
 
               <div class="input"> 
                 <label for="password">Password</label><br></br>
-                <input type="text" id="password" name="password" placeholder="password" autofocus></input>
+                <input type="text" id="password" name="password" placeholder="password" autofocus onChange={onPasswordChange}></input>
               </div>
               
               <div class="input"> 
                 <label for="repeat-password">Repeat Password</label><br></br>
-                <input type="text" id="repeat-password" name="repeat-password" placeholder="password" autofocus></input>
+                <input type="text" id="repeat-password" name="repeat-password" placeholder="password" autofocus onChange={onRepeatPasswordChange}></input>
               </div>
 
               <div class="input"> 
                 <label for="email-address">Email Address</label><br></br>
-                <input type="text" id="email-address" name="email-adress" placeholder="email address" autofocus></input>
+                <input type="text" id="email-address" name="email-adress" placeholder="email address" autofocus onChange={onEmailChange}></input> 
               </div>
 
               <div class="submit-button">
-          <input type="submit" class="button" value="Create account"></input>
+          <input type="submit" class="button" value="Create account" onClick={createAccount} ></input>
           <div>
             <p class="login-option">or already have an account? <a href="/login-page">Login in</a></p>
           </div>
@@ -68,4 +97,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Index

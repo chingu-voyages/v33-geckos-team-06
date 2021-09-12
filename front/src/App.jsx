@@ -10,7 +10,7 @@ import {
 import Navigation from "./components/Navigation"
 import Header from "./components/Header"
 import Main from "./components/Main"
-import MainSignup from "./components/MainSignup"
+import MainSignup from "./components/MainSignup/Index"
 import Bottom from "./components/Bottom"
 import PrivacyPage from "./components/PrivacyPage";
 import TermsPage from './components/TermsPage';

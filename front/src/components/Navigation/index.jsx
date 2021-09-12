@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Navbar, Nav } from 'react-bootstrap'
 import "./index.css"
-import logo from "../../images/logo.png"
+import logo from "../../images/gekch-logo.png"
 
 export default class Navigation extends Component {
     render() {
