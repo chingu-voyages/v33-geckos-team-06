@@ -1,15 +1,19 @@
 
 .app-create-new-bar{
-    width: 100%;
-    height: 80px;
-    background-color: #BEDFF1;
-    text-align: center;
-    padding: 15px 10px;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:150px;
+    background-color: #073815;
+    color: #524e4f;
     font-size: 2em;
-    color: #635E5E;
     font-style: italic;
     font-weight: bold;
+    margin-top: 50px;
     box-shadow: 1px 2px 5px gray;
+
   }
   
   

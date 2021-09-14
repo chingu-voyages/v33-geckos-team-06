@@ -52,7 +52,7 @@ const Index = () => {
 
               <div class="input"> 
                 <label for="password">Password</label><br></br>
-                <input type="text" id="password" name="password" placeholder="password" autofocus onChange={onPasswordChange}></input>
+                <input type="text" id="password1" name="password" placeholder="password" autofocus onChange={onPasswordChange}></input>
               </div>
               
               <div class="input"> 

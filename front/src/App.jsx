@@ -6,8 +6,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
+import NavbarSignup from "./components/NavbarSignup"
 import Navigation from "./components/Navigation"
+import HeaderSignup from "./components/HeaderSignup"
 import Header from "./components/Header"
 import Main from "./components/Main"
 import MainSignup from "./components/MainSignup/Index"
@@ -52,7 +53,7 @@ export default class App extends Component {
           <Route path="/sign-up">
             <div>
               <Navigation/>
-              <Header/>
+              <NavbarSignup/>
               <MainSignup/>
               <Bottom/>
             </div>
