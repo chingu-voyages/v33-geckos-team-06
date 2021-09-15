@@ -4,6 +4,9 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 // Follow this pattern to import other Firebase services
 // import { } from 'firebase/<service>';
 
+let app = null;
+let db = null;
+
 const InitializeFirebase = () => {
     // TODO: Replace the following with your app's Firebase project configuration
     const firebaseConfig = {
@@ -15,8 +18,12 @@ const InitializeFirebase = () => {
         appId: "1:545190063381:web:b23b157c7dc9c00450cd1c"
     };
     
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+    app = initializeApp(firebaseConfig);
+    db = getFirestore(app);
+    if (app && db)
+        return true;
+
+    return false;
 }
 
 const CreateUserWithEmailAndPassword = async  (email, password) => {
@@ -67,8 +74,28 @@ const SignInWithEmailAndPassword = async (email, password) => {
     return user;
 }
 
+const GetGames = async () => {
+    
+    const games = collection(db, 'games');
+    const gamesSnapshot = await getDocs(games);
+    const gamesList = gamesSnapshot.docs.map(doc => doc.data());
+
+    return gamesList;
+}
+
+const GetFeaturedGames = async () => {
+    
+    const games = collection(db, 'featured_games');
+    const gamesSnapshot = await getDocs(games);
+    const gamesList = gamesSnapshot.docs.map(doc => doc.data());
+
+    return gamesList;
+}
+
 export {
     InitializeFirebase,
     CreateUserWithEmailAndPassword,
-    SignInWithEmailAndPassword
+    SignInWithEmailAndPassword,
+    GetGames,
+    GetFeaturedGames
 };
