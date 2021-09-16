@@ -17,7 +17,7 @@ import PrivacyPage from "./components/PrivacyPage";
 import TermsPage from './components/TermsPage';
 import './App.css'
 import { InitializeFirebase } from './utils/FirebaseConnector'
-
+import Browse from "./pages/BrowsePage"
 
 export default class App extends Component {
   render() {
@@ -68,6 +68,12 @@ export default class App extends Component {
               <Bottom/>
             </div>
             
+          </Route>
+
+          <Route path="/browse-page">
+            <div>
+              
+            </div>
           </Route>
           
         </Switch>
