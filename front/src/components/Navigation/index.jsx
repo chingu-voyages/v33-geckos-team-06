@@ -24,7 +24,7 @@ export default class Navigation extends Component {
 
 
                     <Nav.Item >
-                        <Nav.Link className="inactive" href="/Browse Games">Browse Games</Nav.Link>
+                        <Nav.Link className="inactive" href="/Browse-page">Browse Games</Nav.Link>
                     </Nav.Item>
 
                     {/* me-auto: margin end-auto*/}
