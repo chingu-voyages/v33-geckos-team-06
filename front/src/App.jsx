@@ -45,6 +45,12 @@ export default class App extends Component {
                 <PrivacyPage />
               </Route>
 
+
+          <Route path="/browse-page">
+            <Browse></Browse>
+            <Bottom></Bottom>  
+          
+          </Route>
               <Route path="/sign-in">
                 <div>
                   <Navigation />
@@ -61,10 +67,6 @@ export default class App extends Component {
                   <MainSignup />
                   <Bottom />
                 </div>
-              </Route>
-
-              <Route path="/browse-page">
-                <div></div>
               </Route>
 
               <Route path="/">
