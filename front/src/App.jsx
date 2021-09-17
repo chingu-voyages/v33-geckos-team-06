@@ -69,6 +69,10 @@ export default class App extends Component {
                 </div>
               </Route>
 
+              <Route path="/browse-page">
+                <div></div>
+              </Route>
+
               <Route path="/">
                 <div>
                   <Navigation />
