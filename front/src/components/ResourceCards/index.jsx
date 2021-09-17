@@ -14,7 +14,10 @@ const ResourceCard = (props) => {
                         <span className="emphasis"> {props.game} </span><br></br> {props.description} 
                         <br></br>
                         {props.author}  <br></br>
-                        Genre  <br></br>
+                        {props.genre}  <br></br>
+                        {props.platform.map((e) => {
+                            return e + ' '
+                        })}
                         <a className="all-images__link" href="resource.details">Details</a>
               </div>
         

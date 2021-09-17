@@ -1,73 +1,80 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import "./BrowsePage.css" 
 import ResourceCards from "../components/ResourceCards"
 import Navigation from "../components/Navigation"
+import { GetGames } from '../utils/FirebaseConnector'
 
-const data = [
-    {
-      game: 'halo', 
-      description: 'this game is a fantastic game', 
-      author: 'this is the author' , 
-      genre: 'this is the genre' ,
-      details: 'Details???',
-      _id: 1
-    },
-    {
-      game: 'halo', 
-      description: 'this game is a fantastic game', 
-      author: 'this is the author' , 
-      genre: 'this is the genre' ,
-      details: 'Details???',
-      _id: 2
-    },{
-      game: 'halo', 
-      description: 'this game is a fantastic game', 
-      author: 'this is the author' , 
-      genre: 'this is the genre' ,
-      details: 'Details???',
-      _id: 3
-    },{
-      game: 'halo', 
-      description: 'this game is a fantastic game', 
-      author: 'this is the author' , 
-      genre: 'this is the genre' ,
-      details: 'Details???',
-      _id: 4
-    },{
-      game: 'halo', 
-      description: 'this game is a fantastic game', 
-      author: 'this is the author' , 
-      genre: 'this is the genre' ,
-      details: 'Details???',
-      _id: 5
-    },{
-      game: 'halo', 
-      description: 'this game is a fantastic game', 
-      author: 'this is the author' , 
-      genre: 'this is the genre' ,
-      details: 'Details???',
-      _id: 6
-    },{
-        game: 'halo', 
-        description: 'this game is a fantastic game', 
-        author: 'this is the author' , 
-        genre: 'this is the genre' ,
-        details: 'Details???',
-        _id: 7
-      },{
-        game: 'halo', 
-        description: 'this game is a fantastic game', 
-        author: 'this is the author' , 
-        genre: 'this is the genre' ,
-        details: 'Details???',
-        _id: 8
-      },
-    ]
+// const data = [
+//     {
+//       game: 'halo', 
+//       description: 'this game is a fantastic game', 
+//       author: 'this is the author' , 
+//       genre: 'this is the genre' ,
+//       details: 'Details???',
+//       _id: 1
+//     },
+//     {
+//       game: 'halo', 
+//       description: 'this game is a fantastic game', 
+//       author: 'this is the author' , 
+//       genre: 'this is the genre' ,
+//       details: 'Details???',
+//       _id: 2
+//     },{
+//       game: 'halo', 
+//       description: 'this game is a fantastic game', 
+//       author: 'this is the author' , 
+//       genre: 'this is the genre' ,
+//       details: 'Details???',
+//       _id: 3
+//     },{
+//       game: 'halo', 
+//       description: 'this game is a fantastic game', 
+//       author: 'this is the author' , 
+//       genre: 'this is the genre' ,
+//       details: 'Details???',
+//       _id: 4
+//     },{
+//       game: 'halo', 
+//       description: 'this game is a fantastic game', 
+//       author: 'this is the author' , 
+//       genre: 'this is the genre' ,
+//       details: 'Details???',
+//       _id: 5
+//     },{
+//       game: 'halo', 
+//       description: 'this game is a fantastic game', 
+//       author: 'this is the author' , 
+//       genre: 'this is the genre' ,
+//       details: 'Details???',
+//       _id: 6
+//     },{
+//         game: 'halo', 
+//         description: 'this game is a fantastic game', 
+//         author: 'this is the author' , 
+//         genre: 'this is the genre' ,
+//         details: 'Details???',
+//         _id: 7
+//       },{
+//         game: 'halo', 
+//         description: 'this game is a fantastic game', 
+//         author: 'this is the author' , 
+//         genre: 'this is the genre' ,
+//         details: 'Details???',
+//         _id: 8
+//       },
+//     ]
 
 
 
 const Index = () => {
-  const [resourceCards, setResourceCards] = useState(data) 
+  const [resourceCards, setResourceCards] = useState([]);
+  const [data, setData] = useState([]);
+
+  useEffect( () => {
+    GetGames().then( (returnValue) => {setData(returnValue)});
+  }, []);
+
   console.log(resourceCards);
   
     return (
@@ -88,7 +95,11 @@ const Index = () => {
 
       <div id="all-images">
       {data && data.map(dataItem =>
-            <ResourceCards game={dataItem.game} description={dataItem.description} author={dataItem.author}/>
+            <ResourceCards game={dataItem.game} 
+                           description={dataItem.description} 
+                           author={dataItem.author} 
+                           genre={dataItem.genre} 
+                           platform={dataItem.platform}/>
                         // <tr key={data.id}>
                         //     <td>{data.firstName} {data.lastName}</td>
                         //     <td>{data.email}</td>

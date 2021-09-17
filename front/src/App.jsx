@@ -69,10 +69,6 @@ export default class App extends Component {
                 </div>
               </Route>
 
-              <Route path="/browse-page">
-                <div></div>
-              </Route>
-
           <Route path="/browse-page">
             <Browse></Browse>
             <Bottom></Bottom>  
@@ -94,6 +90,8 @@ export default class App extends Component {
           
           
         </Switch>
+      </div>
+      </Router>
       </div>
     );
   }
