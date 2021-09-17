@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Mainpage from "./components/Mainpage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import NavbarSignup from "./components/NavbarSignup";
 import Navigation from "./components/Navigation";
@@ -13,6 +13,7 @@ import TermsPage from "./components/TermsPage";
 import "./App.css";
 import { InitializeFirebase } from "./utils/FirebaseConnector";
 import Browse from "./pages/BrowsePage";
+import About from "./components/About";
 
 export default class App extends Component {
   render() {
@@ -26,6 +27,18 @@ export default class App extends Component {
             <Switch>
               <Route path="/termsofservice">
                 <TermsPage />
+              </Route>
+
+              <Route path="/mainpage">
+                <div>
+                  <Mainpage />
+                </div>
+              </Route>
+
+              <Route path="/about">
+                <div>
+                  <About />
+                </div>
               </Route>
 
               <Route path="/privacy">
@@ -50,6 +63,10 @@ export default class App extends Component {
                 </div>
               </Route>
 
+              <Route path="/browse-page">
+                <div></div>
+              </Route>
+
               <Route path="/">
                 <div>
                   <Navigation />
@@ -57,10 +74,6 @@ export default class App extends Component {
                   <Main />
                   <Bottom />
                 </div>
-              </Route>
-
-              <Route path="/browse-page">
-                <div></div>
               </Route>
             </Switch>
           </div>
