@@ -8,11 +8,17 @@ const About = () => {
   return (
     <div>
       <Navigation />
-      <p>help</p>
-      <p>help</p>
-      <p>help</p>
-      <p>help</p>
-      <p>help</p>
+      <body>
+        <main>
+          <div class="box2">
+            <h1>About Page</h1>
+          </div>
+          <div class="box1">
+            <h1>About Page</h1>
+          </div>
+        </main>
+      </body>
+
       <Bottom />
     </div>
   );
