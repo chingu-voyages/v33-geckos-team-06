@@ -73,17 +73,27 @@ export default class App extends Component {
                 <div></div>
               </Route>
 
-              <Route path="/">
-                <div>
-                  <Navigation />
-                  <Header />
-                  <Main />
-                  <Bottom />
-                </div>
-              </Route>
-            </Switch>
-          </div>
-        </Router>
+          <Route path="/browse-page">
+            <Browse></Browse>
+            <Bottom></Bottom>  
+          
+          </Route>
+
+          <Route path="/">
+            <div>
+              <Navigation/>
+              <Header/>
+              <Main/>
+              <Bottom/>
+            </div>
+           
+
+
+          </Route>
+
+          
+          
+        </Switch>
       </div>
     );
   }
