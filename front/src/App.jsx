@@ -60,6 +60,12 @@ export default class App extends Component {
             
           </Route>
 
+          <Route path="/browse-page">
+            <Browse></Browse>
+            <Bottom></Bottom>  
+          
+          </Route>
+
           <Route path="/">
             <div>
               <Navigation/>
@@ -67,14 +73,12 @@ export default class App extends Component {
               <Main/>
               <Bottom/>
             </div>
-            
+           
+
+
           </Route>
 
-          <Route path="/browse-page">
-            <div>
-              
-            </div>
-          </Route>
+          
           
         </Switch>
       </div>
