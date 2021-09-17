@@ -64,7 +64,8 @@ export default class App extends Component {
               </Route>
 
               <Route path="/browse-page">
-                <div></div>
+                <Browse></Browse>
+                <Bottom></Bottom>
               </Route>
 
               <Route path="/">
