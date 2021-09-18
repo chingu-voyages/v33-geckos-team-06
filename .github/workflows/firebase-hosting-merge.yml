@@ -24,3 +24,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_GEKCHIO }}'
           channelId: live
           projectId: gekchio
+          entryPoint: ./front
