@@ -14,7 +14,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '14.17.3'
-      - run: npm ci 
+      - run: npm install 
         working-directory: ./front
       - run: npm run build
         working-directory: ./front
