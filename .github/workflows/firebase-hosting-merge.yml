@@ -14,9 +14,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '14.17.3'
-      - run: npm install 
+      - run: npm ci 
         working-directory: ./front
-      - run: npm run build
+      - run: CI=false npm run build
         working-directory: ./front
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
