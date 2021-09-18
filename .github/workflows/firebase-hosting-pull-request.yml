@@ -12,9 +12,13 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '14.17.3'
-      - run: npm ci && npm run build
+      - run: npm ci 
+        working-directory: ./front
+      - run: CI=false npm run build
+        working-directory: ./front
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_GEKCHIO }}'
           projectId: gekchio
+          entryPoint: ./front
