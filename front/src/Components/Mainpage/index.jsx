@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./index.css";
 import ResourceCards from "../ResourceCards";
 import Navigation from "../Navigation";
+import Bottom from "../Bottom";
 
 const data = [
   {
@@ -104,6 +105,7 @@ const Index = () => {
                 // </tr>
               )}
           </div>
+          <Bottom />
         </div>
       </div>
     </div>

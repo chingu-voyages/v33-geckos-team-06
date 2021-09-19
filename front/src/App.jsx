@@ -1,3 +1,4 @@
+import AboutPage from "./components/AboutPage";
 import React, { Component } from "react";
 import Mainpage from "./components/Mainpage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -13,7 +14,6 @@ import TermsPage from "./components/TermsPage";
 import "./App.css";
 import { InitializeFirebase } from "./utils/FirebaseConnector";
 import Browse from "./pages/BrowsePage";
-import About from "./components/About";
 
 export default class App extends Component {
   render() {
@@ -37,7 +37,7 @@ export default class App extends Component {
 
               <Route path="/about">
                 <div>
-                  <About />
+                  <AboutPage />
                 </div>
               </Route>
 
