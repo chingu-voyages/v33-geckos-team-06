@@ -15,6 +15,12 @@ import { InitializeFirebase } from "./utils/FirebaseConnector";
 import Browse from "./pages/BrowsePage";
 import About from "./components/About";
 
+import Navbar_uploadPage from "./components/Navbar_uploadPage"
+import MainPanel_uploadPage from "./components/MainPanel_uploadPage"
+import Footer_uploadPage from "./components/Footer_uploadPage"
+import './App.css'
+
+
 export default class App extends Component {
   render() {
     InitializeFirebase();

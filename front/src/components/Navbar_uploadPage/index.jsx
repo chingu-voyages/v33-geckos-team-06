@@ -4,7 +4,7 @@ import { Navbar, Nav } from 'react-bootstrap'
 import "./index.css"
 import logo from "../../images/gekch-logo.png"
 
-export default class Navigation extends Component {
+export default class Navbar_uploadPage extends Component {
     render() {
         return (
             <div>
