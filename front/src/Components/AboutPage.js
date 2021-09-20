@@ -107,7 +107,7 @@ function AboutPage(props) {
             About Page
           </HeroDiv>
           <MainDiv>
-            {/* About Page text */}
+            {/* AboutPage text */}
             <Header>Header</Header>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
