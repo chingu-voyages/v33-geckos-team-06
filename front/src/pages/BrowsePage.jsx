@@ -75,16 +75,10 @@ const Index = () => {
       <div>
         <Navigation/>
         <div className="main">
-        <div className="left-section"> 
-    
-            <div className="popular">Popular Tags</div>
-            <div className="browse">Browse</div>
-            <div className="games-by-price">Games By Price</div>
-
-            </div>
+        
 
       <div className="browse-box">
-         <h1 className="browse-title">Featured Games</h1>
+         <h1 className="browse-title">Browse Games</h1>
 
       <div id="all-images">
       {data && data.map(dataItem =>
