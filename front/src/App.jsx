@@ -14,6 +14,7 @@ import TermsPage from "./components/TermsPage";
 import "./App.css";
 import { InitializeFirebase } from "./utils/FirebaseConnector";
 import Browse from "./pages/BrowsePage";
+import MainUploadGame from "./components/MainUploadGame"
 
 export default class App extends Component {
   render() {
@@ -46,11 +47,11 @@ export default class App extends Component {
               </Route>
 
 
-          <Route path="/browse-page">
-            <Browse></Browse>
-            <Bottom></Bottom>  
-          
-          </Route>
+              <Route path="/browse-page">
+                <Browse></Browse>
+                <Bottom></Bottom>
+
+              </Route>
               <Route path="/sign-in">
                 <div>
                   <Navigation />
@@ -74,23 +75,31 @@ export default class App extends Component {
                 <Bottom></Bottom>
               </Route>
 
-          <Route path="/">
-            <div>
-              <Navigation/>
-              <Header/>
-              <Main/>
-              <Bottom/>
-            </div>
-           
+              <Route path="/Upload-games">
+                <div>
+                  <Navigation />
+                  <MainUploadGame />
+                  <Bottom />
+                </div>
+              </Route>
+
+              <Route path="/">
+                <div>
+                  <Navigation />
+                  <Header />
+                  <Main />
+                  <Bottom />
+                </div>
 
 
-          </Route>
 
-          
-          
-        </Switch>
-      </div>
-      </Router>
+              </Route>
+
+
+
+            </Switch>
+          </div>
+        </Router>
       </div>
     );
   }
