@@ -32,8 +32,8 @@ const Index = () => {
                            author={dataItem.author} 
                            genre={dataItem.genre} 
                            platform={dataItem.platform}
-                           download_link={dataItem.download_link ?? ''}
-                           images={dataItem.images ?? ''}
+                           download_link={dataItem.download_files ?? []}
+                           images={dataItem.images ?? []}
             />
                         // <tr key={data.id}>
                         //     <td>{data.firstName} {data.lastName}</td>
