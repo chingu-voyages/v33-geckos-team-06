@@ -14,84 +14,91 @@ import TermsPage from "./components/TermsPage";
 import "./App.css";
 import { InitializeFirebase } from "./utils/FirebaseConnector";
 import Browse from "./pages/BrowsePage";
+import GameDescriptionModal from "./components/GameDescriptionModal";
+
+import { GlobalProvider } from "./contexts/GlobalContext";
 
 export default class App extends Component {
   render() {
     InitializeFirebase();
     return (
+
       <div>
-        <Router>
-          <div>
-            {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-            <Switch>
-              <Route path="/termsofservice">
-                <TermsPage />
-              </Route>
-
-              <Route path="/mainpage">
-                <div>
-                  <Mainpage />
-                </div>
-              </Route>
-
-              <Route path="/about">
-                <div>
-                  <AboutPage />
-                </div>
-              </Route>
-
-              <Route path="/privacy">
-                <PrivacyPage />
-              </Route>
-
-
-          <Route path="/browse-page">
-            <Browse></Browse>
-            <Bottom></Bottom>  
-          
-          </Route>
-              <Route path="/sign-in">
-                <div>
-                  <Navigation />
-                  <Header />
-                  <Main />
-                  <Bottom />
-                </div>
-              </Route>
-
-              <Route path="/sign-up">
-                <div>
-                  <Navigation />
-                  <NavbarSignup />
-                  <MainSignup />
-                  <Bottom />
-                </div>
-              </Route>
-
-              <Route path="/browse-page">
-                <Browse></Browse>
-                <Bottom></Bottom>
-              </Route>
-
-          <Route path="/">
+          <GlobalProvider>
+          <Router>
             <div>
-              <Navigation/>
-              <Header/>
-              <Main/>
-              <Bottom/>
-            </div>
-           
+              {/* A <Switch> looks through its children <Route>s and
+              renders the first one that matches the current URL. */}
+              <Switch>
+                <Route path="/termsofservice">
+                  <TermsPage />
+                </Route>
+
+                <Route path="/mainpage">
+                  <div>
+                    <Mainpage />
+                  </div>
+                </Route>
+
+                <Route path="/about">
+                  <div>
+                    <AboutPage />
+                  </div>
+                </Route>
+
+                <Route path="/privacy">
+                  <PrivacyPage />
+                </Route>
 
 
-          </Route>
+            <Route path="/browse-page">
+              <Browse></Browse>
+              <Bottom></Bottom>  
+            
+            </Route>
+                <Route path="/sign-in">
+                  <div>
+                    <Navigation />
+                    <Header />
+                    <Main />
+                    <Bottom />
+                  </div>
+                </Route>
 
-          
-          
-        </Switch>
-      </div>
-      </Router>
-      </div>
+                <Route path="/sign-up">
+                  <div>
+                    <Navigation />
+                    <NavbarSignup />
+                    <MainSignup />
+                    <Bottom />
+                  </div>
+                </Route>
+
+                <Route path="/browse-page">
+                  <Browse></Browse>
+                  <Bottom></Bottom>
+                </Route>
+
+            <Route path="/">
+              <div>
+                <Navigation/>
+                <Header/>
+                <Main/>
+                <Bottom/>
+              </div>
+            
+
+
+            </Route>
+
+            
+            
+          </Switch>
+        </div>
+        <GameDescriptionModal />
+        </Router>
+      </GlobalProvider>
+        </div>
     );
   }
 }
