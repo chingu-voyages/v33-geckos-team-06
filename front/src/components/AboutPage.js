@@ -8,46 +8,6 @@ const Container = styled.div`
   display: flex;
 `;
 
-const Sidebar = styled.div`
-  background: #a8a7a7;
-  width: 300px;
-  height: 100vh;
-
-  padding-top: 120px;
-  padding-left: 33px;
-
-  font-family: Work Sans;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 14.562px;
-  line-height: 17px;
-  /* identical to box height */
-
-  letter-spacing: -0.02em;
-
-  color: #ffffff;
-`;
-
-const SidebarHeading = styled.h1`
-  font-family: Work Sans;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 14.562px;
-  line-height: 17px;
-`;
-
-const SidebarSub = styled.h1`
-  font-family: Work Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 8.98932px;
-  line-height: 11px;
-  /* identical to box height */
-
-  letter-spacing: -0.02em;
-
-  color: #ffffff;
-`;
 
 const HeroDiv = styled.div`
   display: flex;
@@ -94,11 +54,7 @@ function AboutPage(props) {
     <div>
       <Navigation />
       <Container>
-        {/* left sidebar */}
-        <Sidebar>
-          <SidebarHeading>HEADER</SidebarHeading>
-          <SidebarSub>Subheading</SidebarSub>
-        </Sidebar>
+        
 
         <RightDiv>
           {/* main div */}
