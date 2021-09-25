@@ -29,7 +29,7 @@ export default class Navigation extends Component {
 
                     {/* me-auto: margin end-auto*/}
                     <Nav.Item className="me-auto">
-                        <Nav.Link className="inactive" href="/Upload Games">Upload Games</Nav.Link>
+                        <Nav.Link className="inactive" href="/Upload-games">Upload Games</Nav.Link>
                     </Nav.Item>
 
 
