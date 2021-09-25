@@ -29,16 +29,25 @@ export default class Navigation extends Component {
 
                     {/* me-auto: margin end-auto*/}
                     <Nav.Item className="me-auto">
-                        <Nav.Link className="inactive" href="/Upload Games">Upload Games</Nav.Link>
+                        <Nav.Link className="inactive" href="/Upload-games">Upload Games</Nav.Link>
                     </Nav.Item>
 
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     {/* expand必须和toggle，collapse同时用 */}
                     <Navbar.Collapse expand="md" id="basic-navbar-nav" className="justify-content-end">
-                        <Nav.Link href="/sign-in">Sign in</Nav.Link>
-                        <Nav.Link href="/sign-up">Sign up</Nav.Link>
-
+                        {
+                            localStorage.getItem('data') ? 
+                            <React.Fragment>
+                                {JSON.parse(localStorage.data).user.email} | <Nav.Link href="/" onClick={() => {localStorage.clear()}}>Sign Out</Nav.Link>
+                            </React.Fragment>
+                                
+                            :
+                                <React.Fragment>
+                                    <Nav.Link href="/sign-in">Sign in</Nav.Link>
+                                    <Nav.Link href="/sign-up">Sign up</Nav.Link>
+                                </React.Fragment>
+                        }
                     </Navbar.Collapse>
 
 

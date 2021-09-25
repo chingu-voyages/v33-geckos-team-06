@@ -1,3 +1,4 @@
+import AboutPage from "./components/AboutPage";
 import React, { Component } from "react";
 import Mainpage from "./components/Mainpage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -13,44 +14,53 @@ import TermsPage from "./components/TermsPage";
 import "./App.css";
 import { InitializeFirebase } from "./utils/FirebaseConnector";
 import Browse from "./pages/BrowsePage";
-import About from "./components/About";
+
+import MainUploadGame from "./components/MainUploadGame"
+
+import GameDescriptionModal from "./components/GameDescriptionModal";
+
+import { GlobalProvider } from "./contexts/GlobalContext";
+
 
 export default class App extends Component {
   render() {
     InitializeFirebase();
     return (
+
       <div>
-        <Router>
-          <div>
-            {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-            <Switch>
-              <Route path="/termsofservice">
-                <TermsPage />
+          <GlobalProvider>
+          <Router>
+            <div>
+              {/* A <Switch> looks through its children <Route>s and
+              renders the first one that matches the current URL. */}
+              <Switch>
+                <Route path="/termsofservice">
+                  <TermsPage />
+                </Route>
+
+                <Route path="/mainpage">
+                  <div>
+                    <Mainpage />
+                  </div>
+                </Route>
+
+                <Route path="/about">
+                  <div>
+                    <AboutPage />
+                  </div>
+                </Route>
+
+                <Route path="/privacy">
+                  <PrivacyPage />
+                </Route>
+
+
+
+              <Route path="/browse-page">
+                <Browse></Browse>
+                <Bottom></Bottom>
+
               </Route>
-
-              <Route path="/mainpage">
-                <div>
-                  <Mainpage />
-                </div>
-              </Route>
-
-              <Route path="/about">
-                <div>
-                  <About />
-                </div>
-              </Route>
-
-              <Route path="/privacy">
-                <PrivacyPage />
-              </Route>
-
-
-          <Route path="/browse-page">
-            <Browse></Browse>
-            <Bottom></Bottom>  
-          
-          </Route>
               <Route path="/sign-in">
                 <div>
                   <Navigation />
@@ -60,11 +70,26 @@ export default class App extends Component {
                 </div>
               </Route>
 
-              <Route path="/sign-up">
+
+                <Route path="/sign-up">
+                  <div>
+                    <Navigation />
+                    <NavbarSignup />
+                    <MainSignup />
+                    <Bottom />
+                  </div>
+                </Route>
+
+                <Route path="/browse-page">
+                  <Browse></Browse>
+                  <Bottom></Bottom>
+                </Route>
+
+
+              <Route path="/Upload-games">
                 <div>
                   <Navigation />
-                  <NavbarSignup />
-                  <MainSignup />
+                  <MainUploadGame />
                   <Bottom />
                 </div>
               </Route>
@@ -76,11 +101,23 @@ export default class App extends Component {
                   <Main />
                   <Bottom />
                 </div>
+
+
+
               </Route>
+
+
+
             </Switch>
           </div>
+    
+
+   
+        <GameDescriptionModal />
         </Router>
-      </div>
+      </GlobalProvider>
+        </div>
+
     );
   }
 }

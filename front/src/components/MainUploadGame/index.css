@@ -1,0 +1,43 @@
+
+#theRow{
+    display:flex;
+    flex-direction: row;
+    justify-content:left;
+}
+
+#uploadForm{
+    flex-grow:3;
+    
+   
+}
+#sidebarCol{
+    flex-shrink: 3;
+    max-width: 30px;
+   
+}
+#sidebar{
+    margin-top: 60px;
+    position:fixed;
+    
+    
+}
+
+#form{
+   margin-right:0%;
+   margin-top: 60px;
+    background-color: #073815;
+}
+h2{
+    color:white;
+    padding:3%;
+}
+#innerForm{
+    background-color: white;
+    margin:5%;
+    padding:5%;
+}
+
+#finalButton{
+    display:flex;
+    justify-content: center;
+}

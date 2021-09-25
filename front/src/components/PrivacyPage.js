@@ -53,17 +53,17 @@ const MainDiv = styled.div`
 const Footer = styled.div`
 `;
 
-function TermsPage(props) {
+function PrivacyPage(props) {
     return (
         <div >
             <Navigation />
             <Container>
-                {/* left sidebar */}
+                
 
                 <RightDiv>{/* main div */}
                     <HeroDiv>
                         {/* big hero thing */}
-                        Terms of Service
+                        Privacy Policy
                     </HeroDiv>
                     <MainDiv>
                         {/* privacy policy text */}
@@ -129,4 +129,4 @@ function TermsPage(props) {
     );
 }
 
-export default TermsPage;
+export default PrivacyPage;

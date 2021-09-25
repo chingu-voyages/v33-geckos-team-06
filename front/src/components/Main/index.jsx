@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
+import { useHistory } from "react-router-dom";
+import { withRouter } from 'react-router';
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Form, Button} from "react-bootstrap"
 import "./index.css"
 import { SignInWithEmailAndPassword } from '../../utils/FirebaseConnector'
 
 
-export default class Main extends Component {
+class Main extends Component {
+    
+    componentDidMount() {
+        if (localStorage.getItem('data'))
+            this.props.history.push('/mainpage');
+    }
 
     alertMessage=(username)=>{
         
@@ -52,10 +59,10 @@ export default class Main extends Component {
 
                                 //wait for the backend to test the credentials
                                 const response = await SignInWithEmailAndPassword(this.email.value,this.password.value);
-                                
 
-                                //if nothing went wrong, print out welcome word
-                                this.alertMessage(this.email.value)
+                                //if nothing went wrong, set Login info
+                                localStorage.data = JSON.stringify(response);
+                                this.props.history.push('/mainpage');
                               
                             }
                             catch(e){
@@ -79,3 +86,5 @@ export default class Main extends Component {
         )
     }
 }
+
+export default withRouter(Main);

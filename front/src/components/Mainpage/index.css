@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.box1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 150px;
+  background-color: #bedff1;
+  color: black;
+  margin-top: 50px;
+}
+
+.box2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150%;
+  height: 100px;
+  background-color: #bedff1;
+  color: black;
+  margin-top: 50px;
+}
+main {
+  height: 100vh;
+  display: grid;
+}
+/* grid-template-columns: 2fr 1fr;
+  grid-template-rows: 3fr 1fr;
+} */
