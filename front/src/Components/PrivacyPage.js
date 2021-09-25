@@ -10,7 +10,6 @@ const Container = styled.div`
     display: flex;
 `;
 
-
 const HeroDiv = styled.div`
     display: flex;
     background: #BEDFF1;
