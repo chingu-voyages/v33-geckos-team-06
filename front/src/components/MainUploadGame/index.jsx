@@ -12,8 +12,118 @@ import {
     SidebarContent
 } from "react-pro-sidebar"
 import 'react-pro-sidebar/dist/css/styles.css';
+import { CreateGame } from '../../utils/FirebaseConnector';
+import { withRouter } from 'react-router';
+class index extends Component {
+    
+    constructor(props) {
+        super(props);
 
-export default class index extends Component {
+        this.state = {
+            game: '',
+            access: 'public',
+            accessOptions: [
+                {name: 'draft', value: 'draft'},
+                {name: 'public', value: 'public'},
+                {name: 'restricted', value: 'restricted'}
+            ],
+            files: [],
+            projectType: [],
+            projectTypeOptions: [
+                {name: 'Choose Project Type', value: ''},
+                {name: 'downloadable', value: 'downloadable'}
+            ],
+            genre: [],
+            genreOptions: [ 
+                // TODO - Pull from database
+                {name: 'adventure', value: 'adventure'}, 
+                {name: 'horror', value: 'horror'}, 
+                {name: 'fps', value: 'fps'}, 
+                {name: 'rts', value: 'rts'}, 
+                {name: 'rpg', value: 'rpg'}
+            ],
+            releaseStatus: 'released',
+            releaseStatusOptions: [
+                {name: 'released', value: 'released'}, 
+                {name: 'beta', value: 'beta'}, 
+            ]
+
+        }
+    }
+
+    addFile = (event) => {
+
+        this.setState( (prev) => {
+            console.log([...event.target.files])
+            return {
+                ...prev,
+                files: [...event.target.files]
+            }
+        })
+    }
+
+    onGameTitleChange = (e) => {
+        this.setState( (p) => {
+            return {
+                ...p,
+                game: e.target.value
+            }
+        });
+    }
+
+    onGameDescriptionChange = (e) => {
+        this.setState( (p) => {
+            return {
+                ...p,
+                description: e.target.value
+            }
+        });
+    }
+
+    onSelectedAccessChange = (e) => {
+        this.setState( (p) => {
+            return {
+                ...p,
+                access: Array.from(e.target.selectedOptions, o => o.value)
+            }
+        });
+    }
+
+    onSelectedProjectTypeChange = (e) => {
+        this.setState( (p) => {
+            return {
+                ...p,
+                projectType: Array.from(e.target.selectedOptions, o => o.value)
+            }
+        });
+    }
+
+    onSelectedGenreOptionsChange = (e) => {
+        this.setState( (p) => {
+            return {
+                ...p,
+                genre: Array.from(e.target.selectedOptions, o => o.value)
+            }
+        });
+    }
+
+    onReleaseStatusOptionsChange = (e) => {
+        this.setState( (p) => {
+            return {
+                ...p,
+                releaseStatus: e.target.value
+            }
+        });
+    }
+
+    createGame = (details) => {
+        CreateGame(details).then( () => {
+            alert('Successfully added a new project');
+            this.props.history.push('/browse-page');
+        }
+        );
+    }
+
     render() {
         return (
             <Row id="theRow">
@@ -87,56 +197,84 @@ export default class index extends Component {
 
                             <Form.Group className="mb-3">
                                 <Form.Label>Title</Form.Label>
-                                <Form.Control   />
+                                <Form.Control onChange={this.onGameTitleChange}   />
                             </Form.Group>
 
-                            <Form.Group className="mb-3">
+                            {/* <Form.Group className="mb-3">
                                 <Form.Label>Project URL</Form.Label>
                                 <Form.Control   placeholder="https://username.gekch.io/" />
-                            </Form.Group>
+                            </Form.Group> */}
 
                             <Form.Group className="mb-3">
                                 <Form.Label>Short description or tagline</Form.Label>
-                                <Form.Control />
+                                <Form.Control onChange={this.onGameDescriptionChange} />
                             </Form.Group>
                             
 
                             <Form.Group className="mb-3">
                                 <Form.Label>Uploads</Form.Label>
-                                <Form.Control type="file" size="md"/>
+                                <Form.Control type="file" multiple
+                                    accept="image/png, image/gif, image/jpg, image/jpeg, application/octet-stream,application/zip,application/x-zip,application/x-zip-compressed"
+                                    onChange={this.addFile} 
+                                />
+                                <ul>
+                                {
+                                    this.state?.files?.map( (e) => {
+                                        return <li>{e.name}</li>
+                                    })  
+                                }
+                                </ul>
                             </Form.Group>
 
                             <Form.Group className="mb-3">
                                 <Form.Label> Kind of project</Form.Label>
-                                <Form.Select>
-                                    <option value="downloadable">Downloadable - You only have files to be downloaded</option>
-                                    <option value="item">Saab</option>
-                                    <option value="mercedes">Mercedes</option>
-                                    <option value="audi">Audi</option>
-                                </Form.Select>
+                                <Form.Control as="select" onChange={this.onSelectedProjectTypeChange}>
+                                    {
+                                        this.state.projectTypeOptions.map( options => (
+                                            <option key={options.name} name={options.name} value={options.value}>
+                                                {options.name}
+                                            </option>
+                                        ))
+                                    }
+                                </Form.Control>
                             </Form.Group>
 
                             <Form.Group className="mb-3">
                                 <Form.Label>Release status</Form.Label>
-                                <Form.Select>
-                                    <option value="released">Released - Project is complete, but might receive some updates</option>
-                                    <option value="item">Saab</option>
-                                    <option value="mercedes">Mercedes</option>
-                                    <option value="audi">Audi</option>
+                                <Form.Select  onChange={this.onReleaseStatusOptionsChange}>
+                                    {
+                                        this.state.releaseStatusOptions.map(options => (
+                                            <option key={options.name} name={options.name} value={options.value}>
+                                                {options.name}
+                                            </option>
+                                            ))
+                                    }
                                 </Form.Select>
                             </Form.Group>
 
                             <Form.Group className="mb-3">
                                 <Form.Label>Genre</Form.Label>
-                                <Form.Select>
-                                    <option value="advanture">Adventure</option>
-                                    <option value="item">Saab</option>
-                                    <option value="mercedes">Mercedes</option>
-                                    <option value="audi">Audi</option>
-                                </Form.Select>
+
+                                <Form.Control as="select" multiple  onChange={this.onSelectedGenreOptionsChange}>
+                                    {this.state.genreOptions.map(options => (
+                                    <option key={options.name} name={options.name} value={options.value}>
+                                        {options.name}
+                                    </option>
+                                    ))}
+                                </Form.Control>
+
+                                {/* <Form.Select multiple>
+                                    
+                                    <option value="action">Action</option>
+                                    <option value="adventure">Adventure</option>
+                                    <option value="horror">Horror</option>
+                                    <option value="fps">FPS</option>
+                                    <option value="rts">RTS</option>
+                                    <option value="rpg">RPG</option>
+                                </Form.Select> */}
                             </Form.Group>
 
-                            <Form.Group className="mb-3">
+                            {/* <Form.Group className="mb-3">
                                 <Form.Label>Visibility and access</Form.Label>
                                 <Form.Check
                                     type="radio"
@@ -157,9 +295,11 @@ export default class index extends Component {
                                     id="formHorizontalRadios3"
                                 />
 
-                            </Form.Group>
+                            </Form.Group> */}
 
-                            <div id="finalButton"><Button variant="danger" size="lg">Save and view page</Button></div>
+                            <div id="finalButton">
+                                <Button variant="danger" size="lg" onClick={() => {this.createGame(this.state) }}>Save and view page</Button>
+                            </div>
 
                             
 
@@ -171,3 +311,5 @@ export default class index extends Component {
         )
     }
 }
+
+export default withRouter(index);

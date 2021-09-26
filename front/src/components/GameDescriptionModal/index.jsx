@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
@@ -6,9 +6,22 @@ import { Modal,
          Button } from 'react-bootstrap';
 import { GlobalContext } from '../../contexts/GlobalContext';
 
+import { GetLink } from '../../utils/FirebaseConnector';
+
 const GameDescriptionModal = (details) => {
 
     const [context, setContext] = useContext(GlobalContext);
+
+    const [download, setDownload] = useState('');
+
+    useEffect(() => {
+        GetLink(context?.gameDescriptionModal?.download_link?.[0]).then( (l) => {
+            console.log(`downloadLink - ${l}`);
+            setDownload( l );
+        }
+        );
+    
+    }, [context?.gameDescriptionModal?.download_link])
 
     const handleClose = () => {
         setContext( (prevContext) => {
@@ -19,6 +32,35 @@ const GameDescriptionModal = (details) => {
                 }
             }
         });
+    }
+
+    const downloadLink = (link) => {
+
+        GetLink(link[0]).then( (l) => {
+            console.log(`downloadLink - ${l}`);
+            setDownload( l );
+        }
+        );
+
+
+        // props?.download_link?.map( (i) => {
+        //     GetLink(i).then( (r) => {
+        //         setDownloadLinks( (p) => {
+        //             console.log(`setLink - ${r}`)
+        //             return [ ...p, r ]
+        //         })
+        //     }
+        //     );
+        // });
+
+        // console.log(`downloadLink - ${context?.gameDescriptionModal?.download_link}`)
+        // const xhr = new XMLHttpRequest();
+        // xhr.responseType = 'blob';
+        // xhr.onload = (event) => {
+        // const blob = xhr.response;
+        // };
+        // xhr.open('GET', context?.gameDescriptionModal?.download_link);
+        // xhr.send();
     }
 
     return (
@@ -34,19 +76,20 @@ const GameDescriptionModal = (details) => {
                     })
                 }
             </div>
-            {context?.gameDescriptionModal?.author} <br /><br />
-            Platform(s): {context?.gameDescriptionModal?.platform} <br /><br />
-            {context?.gameDescriptionModal?.description}
+            Author: {context?.gameDescriptionModal?.author} <br /><br />
+            {/* Platform(s): {context?.gameDescriptionModal?.platform} <br /><br /> */}
+            {context?.gameDescriptionModal?.description} <br /><br />
+            {context?.gameDescriptionModal?.genre}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Link to={context?.gameDescriptionModal?.download_link ?? ''} target="_blank" disabled>
-            <Button variant="primary" onClick={handleClose} disabled={context?.gameDescriptionModal?.download_link ?? true}>
+          <a href={download} target='_blank'>
+            <Button variant="primary" disabled={!context?.gameDescriptionModal?.download_link ?? true}>
                 Download
             </Button>
-          </Link>
+          </a>
         </Modal.Footer>
       </Modal>
     );

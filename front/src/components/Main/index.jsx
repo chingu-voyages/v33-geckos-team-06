@@ -11,7 +11,7 @@ class Main extends Component {
     
     componentDidMount() {
         if (localStorage.getItem('data'))
-            this.props.history.push('/mainpage');
+            this.props.history.push('/browse-page');
     }
 
     alertMessage=(username)=>{
@@ -62,7 +62,7 @@ class Main extends Component {
 
                                 //if nothing went wrong, set Login info
                                 localStorage.data = JSON.stringify(response);
-                                this.props.history.push('/mainpage');
+                                this.props.history.push('/browse-page');
                               
                             }
                             catch(e){

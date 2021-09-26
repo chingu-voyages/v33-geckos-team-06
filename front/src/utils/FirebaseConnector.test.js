@@ -1,5 +1,5 @@
 import { InitializeFirebase, CreateUserWithEmailAndPassword, SignInWithEmailAndPassword,
-         GetGames
+         CreateGame, GetGames
  } from './FirebaseConnector';
 
 // test('login with email: test@email.com and password: password, returns user', () => {
@@ -46,6 +46,41 @@ import { InitializeFirebase, CreateUserWithEmailAndPassword, SignInWithEmailAndP
 //     });
 
 // });
+
+test('create a new project returns an object that contain game data', () => {
+
+    let expectedResults = {
+        author: "Creator Author",
+        author_id: "test1",
+        description: "Game Description",
+        download_link: "gamelink",
+        genre: "puzzle",
+        images: ["imageurl"],
+        platform: [
+            "windows",
+            "mac",
+            "android",
+            "ios",
+            "linux"
+        ],
+        price: 0,
+        title: "Creator Game"
+    }
+
+    InitializeFirebase();
+
+    let returnValue = [];
+
+    return CreateGame().then( (res) => {
+
+        returnValue = res;
+
+        expect(expectedResults).toMatchObject(returnValue);
+
+
+        return returnValue;
+    });
+});
 
 test('get list of all games in database, returns an array of objects that contain game data', () => {
 
