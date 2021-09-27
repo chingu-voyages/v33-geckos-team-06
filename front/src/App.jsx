@@ -23,8 +23,12 @@ import { GlobalProvider } from "./contexts/GlobalContext";
 
 
 export default class App extends Component {
-  render() {
+
+  componentDidMount() {
     InitializeFirebase();
+  }
+
+  render() {
     return (
 
       <div>
@@ -38,11 +42,7 @@ export default class App extends Component {
                   <TermsPage />
                 </Route>
 
-                <Route path="/mainpage">
-                  <div>
-                    <Mainpage />
-                  </div>
-                </Route>
+              
 
                 <Route path="/about">
                   <div>
@@ -56,11 +56,6 @@ export default class App extends Component {
 
 
 
-              <Route path="/browse-page">
-                <Browse></Browse>
-                <Bottom></Bottom>
-
-              </Route>
               <Route path="/sign-in">
                 <div>
                   <Navigation />

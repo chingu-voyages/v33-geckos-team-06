@@ -12,6 +12,9 @@
       
   }
   
+  .details-link {
+      cursor: pointer;
+  }
   
   .resource-text{ 
       width:160px;
