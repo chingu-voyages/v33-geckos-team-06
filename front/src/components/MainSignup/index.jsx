@@ -113,19 +113,13 @@ const Index = () => {
               <div>
                 <p class="register">Why register?</p>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Illum delectus facilis dolores pariatur veritatis quas
-                  molestias natus quo dolor qui velit nesciunt hic odio,
-                  repellendus quaerat corporis unde sed veniam!
+                  Gekch.io was created as a platform for creators to upload games and share their content with the community. We host a wide range of games. Resigstering for an account will allow you to access different features of the site.
                 </p>
                 <p class="register">
                   I want to start a collection of new content!
                 </p>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Illum delectus facilis dolores pariatur veritatis quas
-                  molestias natus quo dolor qui velit nesciunt hic odio,
-                  repellendus quaerat corporis unde sed veniam
+                  As a developer, you would be able to upload games and have an online space to share your connect. This is a great space to showcase your work with other content creators!
                 </p>
               </div>
             </div>
