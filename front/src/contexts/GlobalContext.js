@@ -7,9 +7,9 @@ export const GlobalProvider = (props) => {
         {
             gameDescriptionModal: {
                 show: false
-            }, 
-            filteredGames:[]
-
+            },
+            filteredGames:[],
+            followers: []
         }
     );
 

@@ -1,5 +1,10 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, setDoc, addDoc } from 'firebase/firestore/lite';
+import { 
+    getFirestore, 
+    collection, 
+    doc, getDoc, getDocs, setDoc, addDoc, updateDoc, 
+    arrayUnion, arrayRemove 
+} from 'firebase/firestore/lite';
 import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
@@ -38,7 +43,7 @@ const InitializeFirebase = () => {
     return false;
 }
 
-const CreateUserWithEmailAndPassword = async  (email, password) => {
+const CreateUserWithEmailAndPassword = async  (email, password, username) => {
     // EXAMPLE:
     // InitializeFirebase();
     // let newUser = {};
@@ -50,15 +55,19 @@ const CreateUserWithEmailAndPassword = async  (email, password) => {
     const auth = getAuth();
     let returnValue = {};
 
-    let user = await createUserWithEmailAndPassword(auth, email, password)
-                        .catch( (error) => {
-                            const errorCode = error.code;
-                            const errorMessage = error.message;
-                            
-                            returnValue = error;
-                            return returnValue;
-                        });
-    return user;
+    try {
+        let r = await createUserWithEmailAndPassword(auth, email, password);
+
+        await setDoc(doc(db, "users", r.user.uid), {
+            username: username,
+            email: r.user.email
+        });
+
+    } catch (error) {
+        
+        returnValue = error;
+        return returnValue;
+    };
 }
 
 const SignInWithEmailAndPassword = async (email, password) => {
@@ -220,7 +229,7 @@ const CreateGame = async (gameDetails) => {
 
     console.log(`images - ${images}`);
     
-    const gameRef = await addDoc(collection(db, "games"), {...details, ...{download_files: downloadFiles}, ...{images: images}, ...{author: currentUser.email}});
+    const gameRef = await addDoc(collection(db, "games"), {...details, ...{download_files: downloadFiles}, ...{images: images}, ...{author: currentUser.email}, ...{author_reference: doc(db, "users", currentUser.uid)}});
     console.log(`images - ${images}`);
     console.log(`download files - ${downloadFiles}`);
     console.log(`addedGame - ${gameRef.id}`);
@@ -273,6 +282,83 @@ const GetLink = async (link) => {
     return ret;
 }
 
+const GetFollowers = async (user) => {
+    let returnValue = {};
+    
+    let currentUser = JSON.parse(localStorage.data || null)?.user;
+    console.log(`FollowUser - current user ${ JSON.stringify(currentUser) }`);
+    
+    if (currentUser === null) {
+        console.log(`FollowUser - Not logged in.`);
+        return false;
+    }
+
+    try {
+        let userSnap = await getDoc(doc(db, "users",currentUser.uid));
+        if (userSnap.exists()) {
+            let followers = userSnap.data().followers;
+            return followers;
+        }
+
+    } catch (err) {
+        returnValue = err;
+        return returnValue;
+    }
+}
+
+const FollowUser = async (user) => {
+
+    let returnValue = {};
+
+    let currentUser = JSON.parse(localStorage.data).user;
+    console.log(`FollowUser - current user ${ JSON.stringify(currentUser) }`);
+    
+    if (currentUser === null) {
+        console.log(`FollowUser - Not logged in.`);
+        return false;
+    }
+
+    try {
+        await setDoc(doc(db, "users",currentUser.uid), {
+            followers: arrayUnion({author: user})
+        }, { merge: true});
+        // await updateDoc(doc(db, "users",currentUser.uid), {
+        //     followers: arrayUnion({author: user})
+        // });
+        return true;
+
+    } catch (err) {
+        returnValue = err;
+        return returnValue;
+    }
+
+}
+
+const UnfollowUser = async (user) => {
+
+    let returnValue = {};
+
+    let currentUser = JSON.parse(localStorage.data).user;
+    console.log(`UnfollowUser - current user ${ currentUser }`);
+    
+    if (currentUser === null) {
+        console.log(`UnFollowUser - Not logged in.`);
+        return false;
+    }
+
+    try {
+        await updateDoc(doc(db, "users",currentUser.uid), {
+            followers: arrayRemove({author: user})
+        });
+        return true;
+
+    } catch (err) {
+        returnValue = err;
+        return returnValue;
+    }
+
+}
+
 export {
     InitializeFirebase,
     CreateUserWithEmailAndPassword,
@@ -280,5 +366,8 @@ export {
     CreateGame,
     GetGames,
     GetFeaturedGames,
-    GetLink
+    GetLink,
+    FollowUser,
+    UnfollowUser,
+    GetFollowers
 };
