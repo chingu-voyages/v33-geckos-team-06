@@ -56,7 +56,7 @@ const Index = () => {
                 <label for="password">Password</label>
                 <br></br>
                 <input
-                  type="text"
+                  type="password"
                   id="password1"
                   name="password"
                   placeholder="password"
@@ -69,7 +69,7 @@ const Index = () => {
                 <label for="repeat-password">Repeat Password</label>
                 <br></br>
                 <input
-                  type="text"
+                  type="password"
                   id="repeat-password"
                   name="repeat-password"
                   placeholder="password"
