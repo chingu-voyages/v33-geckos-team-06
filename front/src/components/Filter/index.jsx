@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import { GlobalContext } from '../../contexts/GlobalContext'
+import './index.css'
 
 const FilteredComponent = (props) => {
     const [globalState, setGlobalState] = useContext(GlobalContext)
@@ -36,12 +37,16 @@ const FilteredComponent = (props) => {
     
     return (
         <div>
-            <h1>filter components</h1>
-            <span onClick={() => {filterObjects(props.data, 'rpg')}}>RPG</span>
-            <span onClick={() => {filterObjects(props.data, 'adventure')}}>Adventure</span>
-            <span onClick={() => {filterObjects(props.data, 'horror')}}>Horror</span>
-            <span onClick={() => {filterObjects(props.data, 'rts')}}>RTS</span>
-            <span onClick={() => {filterObjects(props.data, 'fps')}}>FPS</span>
+            <div className="sidebar"> 
+            <h1>Popular Tags</h1>   
+            <div className="tags">
+            <span className="hover-color" onClick={() => {filterObjects(props.data, 'rpg')}}>RPG</span>
+            <span className="hover-color" onClick={() => {filterObjects(props.data, 'adventure')}}>Adventure</span>
+            <span className="hover-color" onClick={() => {filterObjects(props.data, 'horror')}}>Horror</span>
+            <span className="hover-color" onClick={() => {filterObjects(props.data, 'rts')}}>RTS</span>
+            <span className="hover-color" onClick={() => {filterObjects(props.data, 'fps')}}>FPS</span> 
+            </div> 
+            </div>
         </div>
         
     )
