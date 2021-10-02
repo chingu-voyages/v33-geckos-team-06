@@ -47,6 +47,7 @@ const FilteredComponent = (props) => {
             <span className="hover-color" onClick={() => {filterObjects(props.data, 'fps')}}>FPS</span> 
             </div> 
             </div>
+            
         </div>
         
     )
