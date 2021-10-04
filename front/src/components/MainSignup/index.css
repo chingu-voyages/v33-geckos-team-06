@@ -21,10 +21,28 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+   
   }
-  
+  @media only screen and (min-width: 590px) {
+    .form-input{
+      padding: 0px 10px 0px 40px;
+      width: 100%;
+      
+      
+      margin-right:-70px;
+    }
+    .input[type="text"]{
+      width: 470px;
+      height: 30px;
+    
+      
+    }
+}
+
   .form-input{
     padding: 0px 100px 0px 40px;
+    width: 100%;
+    min-width: 50vw;
     
   }
   
@@ -33,18 +51,18 @@
     height: 410px;
   }
   
+  
+
   .input{
     padding: 17px 18px 3px;
+    
    
     
   }
-  input[type="text"]{
-    width: 370px;
-    height: 30px;
   
-  }
   
   .submit-button{
+    
     padding: 17px 18px;
     display: flex;
     flex-direction: row;
@@ -58,6 +76,8 @@
     border-radius: 10px;
     padding: 10px;
     border: none;
+
+    height: 50px;
   }
   
   .button:hover {
