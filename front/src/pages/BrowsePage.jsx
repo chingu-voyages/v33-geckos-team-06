@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react'
 import "./BrowsePage.css" 
 import ResourceCards from "../components/ResourceCards"
 import Navigation from "../components/Navigation"
-import { GetGames } from '../utils/FirebaseConnector'
+import { GetGames, GetFollowers } from '../utils/FirebaseConnector'
 import Filter from "../components/Filter"
 import { GlobalContext } from '../contexts/GlobalContext'
 
@@ -13,6 +13,13 @@ const Index = () => {
 
   useEffect( () => {
     GetGames().then( (returnValue) => {setData(returnValue)});
+
+    GetFollowers().then( (r) => {
+      console.log(`Followers - ${JSON.stringify(r)}`);
+      setGlobalState( (prev) => {
+        return {...prev, followers: r}
+      });
+    });
   }, []);
 
   console.log(resourceCards);

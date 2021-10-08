@@ -6,7 +6,7 @@ import { Modal,
          Button } from 'react-bootstrap';
 import { GlobalContext } from '../../contexts/GlobalContext';
 
-import { GetLink } from '../../utils/FirebaseConnector';
+import { FollowUser, UnfollowUser, GetLink } from '../../utils/FirebaseConnector';
 
 const GameDescriptionModal = (details) => {
 
@@ -32,6 +32,42 @@ const GameDescriptionModal = (details) => {
                 }
             }
         });
+    }
+
+    const followUser = (alreadyFollowing) => {
+        if (alreadyFollowing === false) {
+            if (context?.gameDescriptionModal?.author === null)
+                return false;
+
+            setContext( (p) => {
+                return {...p, followers: [...p.followers, {author: context?.gameDescriptionModal?.author}] }
+            })
+            
+            FollowUser(context?.gameDescriptionModal?.author).then( (r) => {
+                if (r) {
+                }
+                else {
+                    alert(`Failed to Follow User - ${context?.gameDescriptionModal?.author}`);
+                }
+            });
+        } else {
+            
+            setContext( (p) => {
+                let arr = [...p.followers];
+                let index = arr.indexOf(context?.gameDescriptionModal?.author);
+                arr.splice(index, 1);
+                return {...p, followers: arr }
+            });
+
+            UnfollowUser(context?.gameDescriptionModal?.author).then( (r) => {
+                if (r) {
+                    alert(`Unfollow User - ${context?.gameDescriptionModal?.author}`);
+                }
+                else {
+                    alert(`Failed to Unfollow User - ${context?.gameDescriptionModal?.author}`);
+                }
+            });
+        }
     }
 
     const downloadLink = (link) => {
@@ -63,23 +99,44 @@ const GameDescriptionModal = (details) => {
         // xhr.send();
     }
 
+    const renderFollow = () => {
+        if (context?.followers?.filter( (e) => {
+            if (e.author === context?.gameDescriptionModal?.author)
+                return true;
+            return false;
+        }))
+        if (context?.followers.find( ({author}) => author === context?.gameDescriptionModal?.author)) {
+            return (<a href="#" onClick={()=>{followUser(true)}}>Unfollow</a>);
+        }
+        else {
+            return (<a href='#' onClick={()=>{followUser(false)}}>Follow</a>);
+        }
+    }
+
     return (
-        <Modal show={context.gameDescriptionModal.show}  onHide={handleClose}>
+        <Modal show={context?.gameDescriptionModal?.show}  onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{context?.gameDescriptionModal?.game}</Modal.Title>
+          <Modal.Title>{context?.gameDescriptionModal?.game ?? ''}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <div>
                 {
-                    context.gameDescriptionModal?.images?.map( (i) => {
+                    context?.gameDescriptionModal?.images?.map( (i) => {
                         return <img className="game-preview" src={i} />
                     })
                 }
             </div>
-            Author: {context?.gameDescriptionModal?.author} <br /><br />
+            Author: {context?.gameDescriptionModal?.author ?? ''}
+            {
+                
+                context?.gameDescriptionModal?.author ?? '' !== JSON.parse(localStorage.data || null)?.user?.email ?
+                    renderFollow()
+                : ''
+            }
+            <br /><br />
             {/* Platform(s): {context?.gameDescriptionModal?.platform} <br /><br /> */}
-            {context?.gameDescriptionModal?.description} <br /><br />
-            {context?.gameDescriptionModal?.genre}
+            {context?.gameDescriptionModal?.description ?? ''} <br /><br />
+            {context?.gameDescriptionModal?.genre ?? ''}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

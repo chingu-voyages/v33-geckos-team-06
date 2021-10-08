@@ -8,6 +8,13 @@ const Index = () => {
     setEmail(event.target.value);
     console.log(email);
   };
+
+  const [username, setUsername] = useState("");
+  const onUsernameChange = (event) => {
+    setUsername(event.target.value);
+    console.log(email);
+  };
+
   const [password, setPassword] = useState("");
   const onPasswordChange = (event) => {
     setPassword(event.target.value);
@@ -21,7 +28,7 @@ const Index = () => {
 
   const createAccount = (event) => {
     if (password === repeatPassword) {
-      CreateUserWithEmailAndPassword(email, password).then((user) => {
+      CreateUserWithEmailAndPassword(email, password, username).then((user) => {
         let loginUser = user;
         console.log(`User - ${JSON.stringify(loginUser)}`);
       });
@@ -47,7 +54,8 @@ const Index = () => {
                   type="text"
                   id="new-username"
                   name="new-usernamee"
-                  placeholder="username"
+                  placeholder="username" 
+                  onChange={onUsernameChange}
                   autofocus
                 ></input>
               </div>
