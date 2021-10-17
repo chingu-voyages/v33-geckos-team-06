@@ -15,10 +15,11 @@ const GameDescriptionModal = (details) => {
     const [download, setDownload] = useState('');
 
     useEffect(() => {
-        GetLink(context?.gameDescriptionModal?.download_link?.[0]).then( (l) => {
-            console.log(`downloadLink - ${l}`);
-            setDownload( l );
-        }
+        if (context?.gameDescriptionModal?.download_link?.[0])
+            GetLink(context?.gameDescriptionModal?.download_link?.[0]).then( (l) => {
+                console.log(`downloadLink - ${l}`);
+                setDownload( l );
+            }
         );
     
     }, [context?.gameDescriptionModal?.download_link])

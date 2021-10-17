@@ -15,10 +15,16 @@ const Index = () => {
     GetGames().then( (returnValue) => {setData(returnValue)});
 
     GetFollowers().then( (r) => {
-      console.log(`Followers - ${JSON.stringify(r)}`);
-      setGlobalState( (prev) => {
-        return {...prev, followers: r}
-      });
+      if (r === false)
+        console.log('GetFollowers returned false');
+      
+      else {
+        console.log(`Followers - ${JSON.stringify(r)}`);
+        setGlobalState( (prev) => {
+          return {...prev, followers: r}
+        });
+      }
+      
     });
   }, []);
 
