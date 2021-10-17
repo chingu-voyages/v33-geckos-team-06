@@ -261,10 +261,17 @@ const CreateGame = async (gameDetails) => {
 const GetGames = async () => {
     
     const games = collection(db, 'games');
-    const gamesSnapshot = await getDocs(games);
-    const gamesList = gamesSnapshot.docs.map(doc => doc.data());
 
-    return gamesList;
+    try {
+        const gamesSnapshot = await getDocs(games);
+        const gamesList = gamesSnapshot.docs.map(doc => doc.data());
+
+        return gamesList;
+    }
+    catch (err) {
+        console.log(`GetGames - ${err}`);
+        return err;
+    }
 }
 
 const GetFeaturedGames = async () => {
@@ -277,9 +284,17 @@ const GetFeaturedGames = async () => {
 }
 
 const GetLink = async (link) => {
+    
     const storage = getStorage();
-    let ret = await getDownloadURL(ref(storage, link));
-    return ret;
+
+    try {
+        let ret = await getDownloadURL(ref(storage, link));
+        return ret;
+    }
+
+    catch (err) {
+        console.log(`GetLink - ${err}`);
+    }
 }
 
 const GetFollowers = async (user) => {
@@ -290,6 +305,10 @@ const GetFollowers = async (user) => {
     
     if (currentUser === null) {
         console.log(`FollowUser - Not logged in.`);
+        return false;
+    }
+    else if (currentUser === undefined) {
+        console.log(`FollowUser - User is undefined`);
         return false;
     }
 
