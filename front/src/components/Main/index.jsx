@@ -32,7 +32,7 @@ class Main extends Component {
         
         return (
             <div id="formBox">
-                <Form action="" id="form" >
+                <Form action="" id="form1" >
                     <div id="startingWord"><h4>Login to your Gekch.io account</h4></div>
 
                     <Form.Group className="mb-3" id="username">
